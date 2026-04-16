@@ -5,6 +5,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in, "cp850");
         String frase = "";
         String fraseFormatada = "";
+        String fraseCifrada = "";
         int pontuacao;
         char[] letrasMaiusculasSemAcento = { 'A', 'A', 'A', 'A', 'A', 'E', 'E', 'E', 'E', 'I', 'I', 'I', 'I', 'O', 'O',
                 'O', 'O', 'O', 'U', 'U', 'U', 'U', 'C' };
@@ -51,11 +52,22 @@ public class Main {
 
                     
                 }
-                System.out.println(fraseFormatada);
+                int tamanho = fraseFormatada.length();
+                int indice = 0;
+
+                if(tamanho>0){
+                    for (int i = 0; i < tamanho; i++) {
+                        fraseCifrada+= fraseFormatada.charAt(indice);
+                        indice = (indice + 3) % tamanho;
+                    }
+                }
+                System.out.println("\nFrase Limpa:    " + fraseFormatada);
+                System.out.println("Mensagem Cifrada: " + fraseCifrada);
 
                 break;
 
         }
+        scanner.close();
 
     }
 
